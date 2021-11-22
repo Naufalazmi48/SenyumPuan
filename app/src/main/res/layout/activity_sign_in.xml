@@ -37,11 +37,11 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"
-                android:hint="@string/edt_hint"
+                android:hint="@string/edt_email"
                 android:inputType="textEmailAddress"
-                android:text="@string/edt_email"
                 tools:layout_editor_absoluteX="-2dp"
-                tools:layout_editor_absoluteY="69dp" />
+                tools:layout_editor_absoluteY="69dp"
+                android:importantForAutofill="no" />
 
             <EditText
                 android:id="@+id/password"
@@ -50,11 +50,11 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
-                android:hint="@string/edt_hint"
-                android:inputType="text"
-                android:text="@string/edt_password"
+                android:hint="@string/edt_password"
+                android:inputType="textPassword"
                 tools:layout_editor_absoluteX="-2dp"
-                tools:layout_editor_absoluteY="69dp" />
+                tools:layout_editor_absoluteY="69dp"
+                android:importantForAutofill="no" />
 
             <Button
                 android:id="@+id/sign_in"

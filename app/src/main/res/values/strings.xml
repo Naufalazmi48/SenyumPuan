@@ -2,7 +2,6 @@
     <string name="app_name">SenyumPuan</string>
     <string name="edt_email">Email</string>
     <string name="edt_password">Password</string>
-    <string name="edt_hint">Tidak boleh kosong</string>
     <string name="btn_sign_in">Sign In</string>
     <string name="no_account">Belum punya akun?</string>
     <string name="to_register">Daftar</string>
