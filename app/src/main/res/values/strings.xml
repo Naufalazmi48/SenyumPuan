@@ -6,4 +6,17 @@
     <string name="btn_sign_in">Sign In</string>
     <string name="no_account">Belum punya akun?</string>
     <string name="to_register">Daftar</string>
+    <string name="tv_nama">Nama</string>
+    <string name="enter_name">Masukkan nama</string>
+    <string name="enter_password">Masukkan password</string>
+    <string name="enter_email">Masukkan Email</string>
+    <string name="tv_email">Email</string>
+    <string name="tv_gender">Gender</string>
+    <string name="tv_address">Alamat</string>
+    <string name="enter_address">Masukkan alamat</string>
+    <string name="enter_gender">Masukkan gender</string>
+    <string name="tv_number_phone">Nomor Hp</string>
+    <string name="tv_password">Password</string>
+    <string name="register">Register</string>
+    <string name="tv_born_date">Tanggal Lahir</string>
 </resources>
