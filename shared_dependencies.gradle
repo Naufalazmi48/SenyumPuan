@@ -1,0 +1,17 @@
+dependencies {
+    // MapBox
+    implementation "com.mapbox.mapboxsdk:mapbox-android-sdk:$mapbox_version"
+    implementation "com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v9:$mapbox_annotation_version"
+
+//    Koin
+    implementation "io.insert-koin:koin-core:3.1.2"
+    implementation "io.insert-koin:koin-android:3.1.2"
+
+//    GSON
+    implementation 'com.google.code.gson:gson:2.8.7'
+
+//    Coroutine Flow
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
+}

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "550659487516",
+    "project_id": "senyumpuan-beb66",
+    "storage_bucket": "senyumpuan-beb66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550659487516:android:ce8e01bba2260808b4acd9",
+        "android_client_info": {
+          "package_name": "com.example.senyumpuan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550659487516-pioi8pgepsnenehm68rgi6vrllsl1au8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfP3ju5jrNjwVQnRcQ8FYdWKupUtvgSOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550659487516-pioi8pgepsnenehm68rgi6vrllsl1au8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
