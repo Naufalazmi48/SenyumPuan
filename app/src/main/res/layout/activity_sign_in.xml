@@ -37,12 +37,17 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"
+<<<<<<< HEAD
                 android:hint="@string/enter_email"
                 android:textColorHint="@color/pink"
                 android:autofillHints="@string/edt_hint"
+=======
+                android:hint="@string/edt_email"
+>>>>>>> 2078c69561021a1c4aafaad0219fe879da6b2b3d
                 android:inputType="textEmailAddress"
                 tools:layout_editor_absoluteX="-2dp"
-                tools:layout_editor_absoluteY="69dp" />
+                tools:layout_editor_absoluteY="69dp"
+                android:importantForAutofill="no" />
 
             <EditText
                 android:id="@+id/password"
@@ -51,12 +56,17 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
+<<<<<<< HEAD
                 android:textColor="@color/pink"
                 android:hint="@string/enter_password"
                 android:autofillHints="@string/edt_hint"
+=======
+                android:hint="@string/edt_password"
+>>>>>>> 2078c69561021a1c4aafaad0219fe879da6b2b3d
                 android:inputType="textPassword"
                 tools:layout_editor_absoluteX="-2dp"
-                tools:layout_editor_absoluteY="69dp" />
+                tools:layout_editor_absoluteY="69dp"
+                android:importantForAutofill="no" />
 
             <Button
                 android:id="@+id/sign_in"

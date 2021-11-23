@@ -1,4 +1,4 @@
-package com.example.senyumpuan
+package com.example.senyumpuan.ui
 
 import android.os.Bundle
 import com.example.senyumpuan.databinding.ActivityMainBinding
@@ -9,6 +9,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.textHellowordl.text = "tes bro"
     }
 }
