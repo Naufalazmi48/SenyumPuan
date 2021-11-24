@@ -3,12 +3,14 @@ package com.example.senyumpuan.ui.sign_in
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import com.example.core.data.Resource
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.ActivitySignInBinding
 import com.example.senyumpuan.ui.BaseActivity
 import com.example.senyumpuan.ui.MainActivity
 import com.example.senyumpuan.ui.register.RegisterActivity
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInActivity : BaseActivity<ActivitySignInBinding>(), View.OnClickListener {
@@ -31,10 +33,9 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(), View.OnClickListen
     }
 
     private fun validateForm(): Boolean =
-        binding.email.text.isNotEmpty() && binding.password.text.isNotEmpty()
+        binding.email.text.toString().isNotEmpty() && binding.password.text.toString().isNotEmpty()
 
     override fun onClick(v: View) {
-        var intent: Intent? = null
         when(v.id) {
             R.id.sign_in -> {
                 if (validateForm()) {
@@ -42,33 +43,37 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(), View.OnClickListen
                     val password = binding.password.text.toString()
                     viewModel.login(email, password)
                 } else {
-                    // TODO invalid form action
+                    if (binding.email.text.toString().isEmpty()){
+                        binding.email.error = "Email tidak boleh kosong"
+                    }
+                    if(binding.password.text.toString().isEmpty()){
+                        binding.password.error ="Password tidak boleh kosong"
+                    }
                 }
             }
 
             R.id.to_register -> {
-                intent = Intent(this, RegisterActivity::class.java)
+                val intent = Intent(this, RegisterActivity::class.java)
+                startActivity(intent)
             }
 
         }
-
-        intent?.let { startActivity(it) }
     }
 
     private fun loginObserver(result: Resource<Boolean>){
         when (result){
             is Resource.Error -> {
-//                TODO : Tampilkan pesan error dan non aktifkan animasi loading
+                Snackbar.make( binding.root,"Email atau Password Salah", Snackbar.LENGTH_SHORT).show()
+                binding.progressBar.isVisible = false
             }
             is Resource.Loading -> {
-//                 TODO : Aktifkan tampilan loading di sini
+                binding.progressBar.isVisible = true
             }
             is Resource.Success -> {
-//                TODO : Non aktifkan tampilan loading
+                binding.progressBar.isVisible = false
 
                 val intent = Intent(this, MainActivity::class.java)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-
                 startActivity(intent)
             }
         }

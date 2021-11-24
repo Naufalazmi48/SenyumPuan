@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/SplashBackground"
@@ -8,14 +8,16 @@
     tools:context=".ui.sign_in.SignInActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="200dp"
+        android:id="@+id/card"
+        android:layout_width="0dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/opacity"
         app:cardCornerRadius="10dp"
-        android:backgroundTint="@color/opacity">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,79 +28,92 @@
                 android:layout_width="80dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/logo"
                 android:layout_marginTop="50dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/logo" />
 
-            <EditText
-                android:id="@+id/email"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="15dp"
-<<<<<<< HEAD
                 android:hint="@string/enter_email"
                 android:textColorHint="@color/pink"
-                android:autofillHints="@string/edt_hint"
-=======
-                android:hint="@string/edt_email"
->>>>>>> 2078c69561021a1c4aafaad0219fe879da6b2b3d
-                android:inputType="textEmailAddress"
-                tools:layout_editor_absoluteX="-2dp"
-                tools:layout_editor_absoluteY="69dp"
-                android:importantForAutofill="no" />
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="8dp"
+                >
 
-            <EditText
-                android:id="@+id/password"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-<<<<<<< HEAD
-                android:textColor="@color/pink"
                 android:hint="@string/enter_password"
-                android:autofillHints="@string/edt_hint"
-=======
-                android:hint="@string/edt_password"
->>>>>>> 2078c69561021a1c4aafaad0219fe879da6b2b3d
-                android:inputType="textPassword"
-                tools:layout_editor_absoluteX="-2dp"
-                tools:layout_editor_absoluteY="69dp"
-                android:importantForAutofill="no" />
+                android:layout_marginHorizontal="20dp"
+                android:textColorHint="@color/pink"
+                android:layout_marginBottom="16dp"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/sign_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/btn_sign_in"
                 android:backgroundTint="@color/pink"
-                />
+                android:layout_marginBottom="50dp"
+                android:text="@string/btn_sign_in" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/no_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="104dp"
-        android:layout_marginBottom="175dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="8dp"
         android:text="@string/no_account"
-        android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textColor="@color/primary"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card" />
 
     <TextView
         android:id="@+id/to_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="249dp"
-        android:layout_marginBottom="173dp"
+        android:layout_alignTop="@+id/no_account"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/no_account"
         android:text="@string/to_register"
         android:textColor="@color/white"
-        android:textSize="17sp" />
-</RelativeLayout>
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/no_account"
+        app:layout_constraintTop_toBottomOf="@+id/card" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/pink"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
