@@ -3,19 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
-        <entry key="..\:/Capstone/SenyumPuan/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15989583333333332" />
-        <entry key="..\:/Capstone/SenyumPuan/app/src/main/res/drawable/ic_launcher_sign_in_background.xml" value="0.18697916666666667" />
-        <entry key="..\:/Capstone/SenyumPuan/app/src/main/res/layout/activity_register.xml" value="0.264" />
-        <entry key="..\:/Capstone/SenyumPuan/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
-        <entry key="..\:/Capstone/SenyumPuan/app/src/main/res/layout/activity_splash.xml" value="0.152" />
-        <entry key="..\:/Capstone/SenyumPuan/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.18697916666666667" />
-        <entry key="..\:/Capstone/SenyumPuan/app/src/main/res/mipmap-anydpi-v26/ic_launcher_sign_in.xml" value="0.15989583333333332" />
-        <entry key="..\:/Capstone/SenyumPuan/app/src/main/res/mipmap-anydpi-v26/ic_launcher_sign_in_round.xml" value="0.15989583333333332" />
-=======
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
->>>>>>> 2078c69561021a1c4aafaad0219fe879da6b2b3d
+        <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/activity_sign_in.xml" value="0.33" />
+        <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/list_item_gender.xml" value="0.20416666666666666" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.11296296296296296" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.11296296296296296" />
       </map>

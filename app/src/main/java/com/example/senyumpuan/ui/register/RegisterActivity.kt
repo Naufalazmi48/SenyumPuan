@@ -3,36 +3,44 @@ package com.example.senyumpuan.ui.register
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import androidx.core.content.ContentProviderCompat.requireContext
+import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.core.data.Resource
+import com.example.core.domain.model.User
+import com.example.core.utils.Helper.formErrorHandler
+import com.example.core.utils.Helper.setAutoClearError
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.ActivityRegisterBinding
 import com.example.senyumpuan.ui.BaseActivity
 import com.google.android.material.snackbar.Snackbar
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickListener {
 
-    override fun getViewBinding(): ActivityRegisterBinding = ActivityRegisterBinding.inflate(layoutInflater)
+    private val viewModel: RegisterViewModel by viewModel()
+
+    override fun getViewBinding(): ActivityRegisterBinding =
+        ActivityRegisterBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
 
-//        val gender = resources.getStringArray(R.array.list_gender)
-//        val arrayAdapter = ArrayAdapter(this, R.layout.list_item_gender, gender)
-//        binding.dropGender.setAdapter(arrayAdapter)
+        setupListener()
+        setupAdapter()
 
-        val items = listOf(R.array.list_gender)
-        val adapter = ArrayAdapter(this, R.layout.list_item_gender, items)
-        (binding.dropGender ).setAdapter(adapter)
+        viewModel.register.observe(this, this::registerObserver)
     }
 
-    private fun regisObserver(result: Resource<Boolean>){
-        when (result){
+    private fun setupAdapter() {
+        val items = resources.getStringArray(R.array.list_gender)
+        val adapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, items)
+        binding.dropGender.setAdapter(adapter)
+    }
+
+    private fun registerObserver(result: Resource<Boolean>) {
+        when (result) {
             is Resource.Error -> {
-                Snackbar.make( binding.root,"Gagal daftar", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, "Gagal daftar", Snackbar.LENGTH_SHORT).show()
                 binding.progressBar.isVisible = false
             }
             is Resource.Loading -> {
@@ -40,60 +48,94 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
             }
             is Resource.Success -> {
                 binding.progressBar.isVisible = false
-                Snackbar.make( binding.root,"Berhasil daftar", Snackbar.LENGTH_SHORT).show()
+                Toast.makeText(this, "Akun telah berhasil di daftarkan!", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }
     }
 
     private fun setupListener() {
-        binding.register.setOnClickListener(this)
+        with(binding) {
+            register.setOnClickListener(this@RegisterActivity)
+
+            edtName.setAutoClearError(name)
+            edtEmail.setAutoClearError(email)
+            dropGender.setAutoClearError(gender)
+            edtPhone.setAutoClearError(phone)
+            edtAddress.setAutoClearError(address)
+            edtAge.setAutoClearError(age)
+            edtPassword.setAutoClearError(password)
+        }
     }
 
     private fun validateForm(): Boolean =
         binding.edtName.text.toString().isNotEmpty() &&
                 binding.edtEmail.text.toString().isNotEmpty() &&
-                binding.dropGender.text.toString().isEmpty() &&
-                binding.edtPhone.text.toString().isEmpty() &&
-                binding.edtAddress.text.toString().isEmpty() &&
-                binding.edtDateOfBirth.text.toString().isEmpty() &&
-                binding.edtPassword.text.toString().isEmpty()
+                binding.dropGender.text.toString().isNotEmpty() &&
+                binding.edtPhone.text.toString().isNotEmpty() &&
+                binding.edtAddress.text.toString().isNotEmpty() &&
+                binding.edtAge.text.toString().isNotEmpty() &&
+                binding.edtPassword.text.toString().isNotEmpty() &&
+                binding.edtPassword.text.toString().trim().length >= 6
+
 
     override fun onClick(v: View) {
-        when(v.id) {
-            R.id.sign_in -> {
+        when (v.id) {
+            R.id.register -> {
                 if (validateForm()) {
-                    val email = binding.edtEmail.text.toString()
-                    val gender = binding.edtEmail.text.toString()
-                    val phone = binding.edtEmail.text.toString()
-                    val address = binding.edtEmail.text.toString()
-                    val birth = binding.edtEmail.text.toString()
-                    val password = binding.edtAddress.text.toString()
-                   // viewModel.login(email, password)
+                    val user = getUserForm()
+                    val password = binding.edtPassword.text.toString()
+
+                    viewModel.register(user, password)
                 } else {
-                    if (binding.edtName.text.toString().isEmpty()){
-                        binding.edtName.error = "Nama tidak boleh kosong"
-                    }
-                    if(binding.edtEmail.text.toString().isEmpty()){
-                        binding.edtEmail.error ="Email tidak boleh kosong"
-                    }
-                    if(binding.dropGender.text.toString().isEmpty()){
-                        binding.dropGender.error ="Gender tidak boleh kosong"
-                    }
-                    if(binding.edtPhone.text.toString().isEmpty()){
-                        binding.edtPhone.error ="Nomor Hp tidak boleh kosong"
-                    }
-                    if(binding.edtAddress.text.toString().isEmpty()){
-                        binding.edtAddress.error ="Alamat tidak boleh kosong"
-                    }
-                    if(binding.edtDateOfBirth.text.toString().isEmpty()){
-                        binding.edtDateOfBirth.error ="Tanggal tidak boleh kosong"
-                    }
-                    if(binding.edtPassword.text.toString().isEmpty()){
-                        binding.edtPassword.error ="Password tidak boleh kosong"
-                    }
+                    showErrorMessage()
                 }
             }
+        }
+    }
+
+    private fun getUserForm(): User {
+        val name = binding.edtName.text.toString()
+        val email = binding.edtEmail.text.toString()
+        val gender = binding.dropGender.text.toString()
+        val phone = binding.edtPhone.text.toString()
+        val address = binding.edtAddress.text.toString()
+        val birth = binding.edtAge.text.toString()
+
+        return User(
+            id = "",
+            email = email,
+            name = name,
+            gender = gender,
+            address = address,
+            age = birth.toInt(),
+            phoneNumber = phone
+        )
+    }
+
+    private fun showErrorMessage() {
+        with(binding) {
+            formErrorHandler(name, edtName.text.toString().isEmpty(), "Nama tidak boleh kosong")
+            formErrorHandler(email, edtEmail.text.toString().isEmpty(), "Email tidak boleh kosong")
+            formErrorHandler(gender, dropGender.text.toString().isEmpty(), "Gender tidak boleh kosong")
+            formErrorHandler(phone, edtPhone.text.toString().isEmpty(), "Nomor Hp tidak boleh kosong")
+            formErrorHandler(address, edtAddress.text.toString().isEmpty(), "Alamat tidak boleh kosong")
+            formErrorHandler(
+                age,
+                edtAge.text.toString().isEmpty(),
+                "Tanggal tidak boleh kosong"
+            )
+            formErrorHandler(
+                password,
+                edtPassword.text.toString().isEmpty(),
+                "Password tidak boleh kosong"
+            )
+            formErrorHandler(
+                password,
+                edtPassword.text.toString().isNotEmpty() && edtPassword.text.toString()
+                    .trim().length < 6,
+                "Password tidak boleh kurang dari 6 digit"
+            )
         }
     }
 }

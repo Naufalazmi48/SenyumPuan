@@ -60,4 +60,9 @@ class UserRepository(private val remoteDataSource: RemoteDataSource): IUserRepos
     }
 
     override fun isLogginedUser(): Boolean = remoteDataSource.isLogginedUser()
+    override fun isVerifiedEmail(): Boolean = remoteDataSource.isVerifiedEmail()
+
+    override fun sendEmailVerification() {
+        remoteDataSource.sendEmailVerification()
+    }
 }

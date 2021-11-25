@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">SenyumPuan</string>
-    <string name="edt_email">Email</string>
-    <string name="edt_password">Password</string>
     <string name="btn_sign_in">Masuk</string>
     <string name="no_account">Belum punya akun?</string>
-    <string name="to_register">Daftar</string>
+    <string name="register">Daftar</string>
+
+<!--    FORM RESOURCE -->
+    <string name="edt_email">Email</string>
+    <string name="edt_password">Password</string>
     <string name="tv_nama">Nama</string>
     <string name="enter_name">Masukkan nama</string>
     <string name="enter_password">Masukkan password</string>
@@ -16,10 +18,12 @@
     <string name="enter_gender">Masukkan gender</string>
     <string name="tv_number_phone">Nomor Hp</string>
     <string name="tv_password">Password</string>
-    <string name="register">Daftar</string>
-    <string name="tv_date_of_birth">Tanggal Lahir</string>
+    <string name="tv_age">Umur</string>
     <string-array name="list_gender">
         <item>Perempuan</item>
         <item>Laki-laki</item>
     </string-array>
+
+<!--    ERROR MESSAGE -->
+
 </resources>

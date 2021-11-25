@@ -6,6 +6,7 @@ import com.example.core.domain.usecase.maps.DesaBinaanInteractor
 import com.example.core.domain.usecase.maps.DesaBinaanUseCase
 import com.example.core.domain.usecase.user.UserInteractor
 import com.example.core.domain.usecase.user.UserUseCase
+import com.example.senyumpuan.ui.register.RegisterViewModel
 import com.example.senyumpuan.ui.sign_in.SignInViewModel
 import com.example.senyumpuan.ui.splashscreen.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -20,4 +21,5 @@ val useCaseModule = module {
 val viewModelModule = module {
     viewModel { SplashViewModel(get()) }
     viewModel { SignInViewModel(get()) }
+    viewModel { RegisterViewModel(get()) }
 }

@@ -2,6 +2,8 @@ package com.example.senyumpuan.ui.splashscreen
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.senyumpuan.R
 import com.example.senyumpuan.ui.MainActivity
@@ -16,16 +18,21 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        viewModel.isLoginedUser().let { logined ->
-            val intent = if (logined) {
-                Intent(this, MainActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            } else {
-                Intent(this, SignInActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            }
+        Handler(Looper.getMainLooper()).postDelayed(
+            {
+                viewModel.isLoginedUser().let { logined ->
+                    val intent = if (logined) {
+                        Intent(this, MainActivity::class.java)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    } else {
+                        Intent(this, SignInActivity::class.java)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    }
 
-            startActivity(intent)
-        }
+                    startActivity(intent)
+                }
+            },
+            2000
+        )
     }
 }
