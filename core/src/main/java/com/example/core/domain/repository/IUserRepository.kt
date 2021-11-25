@@ -10,4 +10,6 @@ interface IUserRepository {
     fun insertUser(user:User): Flow<Resource<Boolean>>
     fun getUser(userId: String): Flow<Resource<User>>
     fun isLogginedUser():Boolean
+    fun isVerifiedEmail():Boolean
+    fun sendEmailVerification()
 }

@@ -1,9 +1,38 @@
 <resources>
     <string name="app_name">SenyumPuan</string>
+    <string name="btn_sign_in">Masuk</string>
+    <string name="no_account">Belum punya akun?</string>
+    <string name="register">Daftar</string>
+
+    <!--    FORM RESOURCE -->
     <string name="edt_email">Email</string>
     <string name="edt_password">Password</string>
-    <string name="edt_hint">Tidak boleh kosong</string>
-    <string name="btn_sign_in">Sign In</string>
-    <string name="no_account">Belum punya akun?</string>
-    <string name="to_register">Daftar</string>
+    <string name="tv_nama">Nama</string>
+    <string name="enter_name">Masukkan nama</string>
+    <string name="enter_password">Masukkan password</string>
+    <string name="enter_email">Masukkan Email</string>
+    <string name="tv_email">Email</string>
+    <string name="tv_gender">Gender</string>
+    <string name="tv_address">Alamat</string>
+    <string name="enter_address">Masukkan alamat</string>
+    <string name="enter_gender">Masukkan gender</string>
+    <string name="tv_number_phone">Nomor Hp</string>
+    <string name="tv_password">Password</string>
+    <string name="tv_age">Umur</string>
+    <string name="success_regiter">Akun telah berhasil di daftarkan!</string>
+    <string-array name="list_gender">
+        <item>Perempuan</item>
+        <item>Laki-laki</item>
+    </string-array>
+
+    <!--    ERROR MESSAGE -->
+    <string name="empty_name">Nama tidak boleh kosong</string>
+    <string name="empty_email">Email tidak boleh kosong</string>
+    <string name="empty_gender">Gender tidak boleh kosong</string>
+    <string name="empty_hp">Nomor Hp tidak boleh kosong</string>
+    <string name="empty_address">Alamat tidak boleh kosong</string>
+    <string name="empty_age">Umur tidak boleh kosong</string>
+    <string name="empty_password">Password tidak boleh kosong</string>
+    <string name="password_must_six_digit">Password tidak boleh kurang dari 6 digit</string>
+
 </resources>

@@ -96,7 +96,7 @@ class RemoteDataSource(private val mDbRef: DatabaseReference, private val mAuth:
                 if (task.isSuccessful) {
                     trySend(ApiResponse.Success(true))
                 } else {
-                    trySend(ApiResponse.Success(false))
+                    trySend(ApiResponse.Error(FAILED_REGISTRATION))
                     Log.e(TAG_FIREBASE, "${task.exception?.message}")
                 }
             }
@@ -149,6 +149,12 @@ class RemoteDataSource(private val mDbRef: DatabaseReference, private val mAuth:
 
     fun isLogginedUser():Boolean = mAuth.currentUser != null
 
+    fun isVerifiedEmail(): Boolean = mAuth.currentUser?.isEmailVerified ?: false
+
+    fun sendEmailVerification() {
+        mAuth.currentUser?.sendEmailVerification()
+    }
+    
     companion object {
         private const val DESA_BINAAN_PATH = "maps/desa_binaan"
         private const val CHATS_PATH = "chats"

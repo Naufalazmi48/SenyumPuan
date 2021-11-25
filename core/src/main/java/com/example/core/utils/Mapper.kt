@@ -33,6 +33,10 @@ object Mapper {
         User(
             id = userResponse.id ?: "",
             name = userResponse.name ?: "",
-            email = userResponse.email ?: ""
+            email = userResponse.email ?: "",
+            address = userResponse.address ?: "",
+            gender = userResponse.gender ?: "",
+            age = userResponse.age ?: -1,
+            phoneNumber = userResponse.phoneNumber ?: ""
         )
 }
