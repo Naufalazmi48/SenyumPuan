@@ -24,20 +24,22 @@ class UserInteractor(private val userRepository: IUserRepository) : UserUseCase 
         }
     }
 
-
     override fun register(user: User, password: String): Flow<Resource<Boolean>> = flow {
         userRepository.registerUser(user.email, password).collect {
                 when(it){
                     is Resource.Success -> {
                         userRepository.sendEmailVerification()
+
                         userRepository.insertUser(user).collect { result ->
                             emit(result)
                         }
                     }
+
                     else -> emit(it)
                 }
         }
     }
 
     override fun isLogginedUser(): Boolean = userRepository.isLogginedUser() && userRepository.isVerifiedEmail()
+
 }

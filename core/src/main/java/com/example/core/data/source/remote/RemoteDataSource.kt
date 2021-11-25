@@ -154,7 +154,7 @@ class RemoteDataSource(private val mDbRef: DatabaseReference, private val mAuth:
     fun sendEmailVerification() {
         mAuth.currentUser?.sendEmailVerification()
     }
-
+    
     companion object {
         private const val DESA_BINAAN_PATH = "maps/desa_binaan"
         private const val CHATS_PATH = "chats"

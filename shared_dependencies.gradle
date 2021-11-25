@@ -1,9 +1,7 @@
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
-
     // MapBox
     implementation "com.mapbox.mapboxsdk:mapbox-android-sdk:$mapbox_version"
     implementation "com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v9:$mapbox_annotation_version"
