@@ -4,7 +4,7 @@
     <string name="no_account">Belum punya akun?</string>
     <string name="register">Daftar</string>
 
-<!--    FORM RESOURCE -->
+    <!--    FORM RESOURCE -->
     <string name="edt_email">Email</string>
     <string name="edt_password">Password</string>
     <string name="tv_nama">Nama</string>
@@ -19,11 +19,20 @@
     <string name="tv_number_phone">Nomor Hp</string>
     <string name="tv_password">Password</string>
     <string name="tv_age">Umur</string>
+    <string name="success_regiter">Akun telah berhasil di daftarkan!</string>
     <string-array name="list_gender">
         <item>Perempuan</item>
         <item>Laki-laki</item>
     </string-array>
 
-<!--    ERROR MESSAGE -->
+    <!--    ERROR MESSAGE -->
+    <string name="empty_name">Nama tidak boleh kosong</string>
+    <string name="empty_email">Email tidak boleh kosong</string>
+    <string name="empty_gender">Gender tidak boleh kosong</string>
+    <string name="empty_hp">Nomor Hp tidak boleh kosong</string>
+    <string name="empty_address">Alamat tidak boleh kosong</string>
+    <string name="empty_age">Umur tidak boleh kosong</string>
+    <string name="empty_password">Password tidak boleh kosong</string>
+    <string name="password_must_six_digit">Password tidak boleh kurang dari 6 digit</string>
 
 </resources>

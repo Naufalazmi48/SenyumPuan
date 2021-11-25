@@ -40,7 +40,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
     private fun registerObserver(result: Resource<Boolean>) {
         when (result) {
             is Resource.Error -> {
-                Snackbar.make(binding.root, "Gagal daftar", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, "${result.message}", Snackbar.LENGTH_SHORT).show()
                 binding.progressBar.isVisible = false
             }
             is Resource.Loading -> {
@@ -48,7 +48,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
             }
             is Resource.Success -> {
                 binding.progressBar.isVisible = false
-                Toast.makeText(this, "Akun telah berhasil di daftarkan!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.success_regiter), Toast.LENGTH_SHORT).show()
                 finish()
             }
         }
@@ -115,26 +115,26 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
 
     private fun showErrorMessage() {
         with(binding) {
-            formErrorHandler(name, edtName.text.toString().isEmpty(), "Nama tidak boleh kosong")
-            formErrorHandler(email, edtEmail.text.toString().isEmpty(), "Email tidak boleh kosong")
-            formErrorHandler(gender, dropGender.text.toString().isEmpty(), "Gender tidak boleh kosong")
-            formErrorHandler(phone, edtPhone.text.toString().isEmpty(), "Nomor Hp tidak boleh kosong")
-            formErrorHandler(address, edtAddress.text.toString().isEmpty(), "Alamat tidak boleh kosong")
+            formErrorHandler(name, edtName.text.toString().isEmpty(), getString(R.string.empty_name))
+            formErrorHandler(email, edtEmail.text.toString().isEmpty(), getString(R.string.empty_email))
+            formErrorHandler(gender, dropGender.text.toString().isEmpty(), getString(R.string.empty_gender))
+            formErrorHandler(phone, edtPhone.text.toString().isEmpty(), getString(R.string.empty_hp))
+            formErrorHandler(address, edtAddress.text.toString().isEmpty(), getString(R.string.empty_address))
             formErrorHandler(
                 age,
                 edtAge.text.toString().isEmpty(),
-                "Tanggal tidak boleh kosong"
+                getString(R.string.empty_age)
             )
             formErrorHandler(
                 password,
                 edtPassword.text.toString().isEmpty(),
-                "Password tidak boleh kosong"
+                getString(R.string.empty_password)
             )
             formErrorHandler(
                 password,
                 edtPassword.text.toString().isNotEmpty() && edtPassword.text.toString()
                     .trim().length < 6,
-                "Password tidak boleh kurang dari 6 digit"
+                getString(R.string.password_must_six_digit)
             )
         }
     }

@@ -62,8 +62,8 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(), View.OnClickListen
 
     private fun showErrorMessage() {
         with(binding){
-           formErrorHandler(email, edtEmail.text.toString().isEmpty(), "Email tidak boleh kosong")
-           formErrorHandler(password, edtPassword.text.toString().isEmpty(), "Password tidak boleh kosong")
+           formErrorHandler(email, edtEmail.text.toString().isEmpty(), getString(R.string.empty_email))
+           formErrorHandler(password, edtPassword.text.toString().isEmpty(), getString(R.string.empty_password))
         }
     }
 
