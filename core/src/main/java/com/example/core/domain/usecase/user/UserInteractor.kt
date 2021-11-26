@@ -41,5 +41,5 @@ class UserInteractor(private val userRepository: IUserRepository) : UserUseCase 
     }
 
     override fun isLogginedUser(): Boolean = userRepository.isLogginedUser() && userRepository.isVerifiedEmail()
-
+    override fun signOut(): Boolean = userRepository.signOut()
 }

@@ -7,5 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface UserUseCase {
     fun login(email: String, password: String): Flow<Resource<Boolean>>
     fun register(user: User, password: String): Flow<Resource<Boolean>>
-    fun isLogginedUser():Boolean
+    fun isLogginedUser(): Boolean
+    fun signOut(): Boolean
 }

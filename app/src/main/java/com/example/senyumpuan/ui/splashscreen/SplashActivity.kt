@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.senyumpuan.R
-import com.example.senyumpuan.ui.MainActivity
+import com.example.senyumpuan.ui.DashboardActivity
 import com.example.senyumpuan.ui.sign_in.SignInActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
             {
                 viewModel.isLoginedUser().let { logined ->
                     val intent = if (logined) {
-                        Intent(this, MainActivity::class.java)
+                        Intent(this, DashboardActivity::class.java)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     } else {
                         Intent(this, SignInActivity::class.java)

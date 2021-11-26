@@ -10,7 +10,7 @@ import com.example.core.utils.Helper.setAutoClearError
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.ActivitySignInBinding
 import com.example.senyumpuan.ui.BaseActivity
-import com.example.senyumpuan.ui.MainActivity
+import com.example.senyumpuan.ui.DashboardActivity
 import com.example.senyumpuan.ui.register.RegisterActivity
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -81,7 +81,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(), View.OnClickListen
             is Resource.Success -> {
                 binding.progressBar.isVisible = false
 
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, DashboardActivity::class.java)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }

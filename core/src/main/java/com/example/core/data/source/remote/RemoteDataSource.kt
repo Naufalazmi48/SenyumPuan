@@ -154,6 +154,14 @@ class RemoteDataSource(private val mDbRef: DatabaseReference, private val mAuth:
     fun sendEmailVerification() {
         mAuth.currentUser?.sendEmailVerification()
     }
+
+    fun signOut():Boolean = try {
+        mAuth.signOut()
+        true
+    }catch (e: Exception) {
+        Log.e(TAG_FIREBASE, e.message ?: "")
+        false
+    }
     
     companion object {
         private const val DESA_BINAAN_PATH = "maps/desa_binaan"
