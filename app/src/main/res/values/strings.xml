@@ -35,4 +35,8 @@
     <string name="empty_password">Password tidak boleh kosong</string>
     <string name="password_must_six_digit">Password tidak boleh kurang dari 6 digit</string>
 
+    <!--    ROLE -->
+    <string name="role_admin">admin</string>
+    <string name="role_user">user</string>
+
 </resources>
