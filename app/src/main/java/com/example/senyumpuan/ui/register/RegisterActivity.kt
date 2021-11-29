@@ -110,7 +110,8 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
             gender = gender,
             address = address,
             age = birth.toInt(),
-            phoneNumber = phone
+            phoneNumber = phone,
+            role = "user"
         )
     }
 
