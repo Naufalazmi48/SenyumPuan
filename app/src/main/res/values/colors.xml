@@ -10,4 +10,5 @@
     <color name="pink">#E54B7A</color>
     <color name="opacity">#B3FFFFFF</color>
     <color name="primary">#EFB6C9</color>
+    <color name="send_bubble_chat">#AEFF7B</color>
 </resources>

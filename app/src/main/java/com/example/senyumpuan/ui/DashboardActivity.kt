@@ -1,17 +1,21 @@
 package com.example.senyumpuan.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import androidx.appcompat.app.AlertDialog
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.ActivityDashboardBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import android.content.Intent
-import androidx.appcompat.app.AlertDialog
+import com.example.senyumpuan.ui.desa_binaan.DesaBinaanActivity
+import com.example.senyumpuan.ui.ruang_aman.RuangAmanActivity
 import com.example.senyumpuan.ui.sign_in.SignInActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class DashboardActivity : BaseActivity<ActivityDashboardBinding>() {
+class DashboardActivity : BaseActivity<ActivityDashboardBinding>(), View.OnClickListener {
 
     private val viewModel: DashboardViewModel by viewModel()
 
@@ -23,6 +27,16 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>() {
 
         supportActionBar?.title = getString(R.string.dashboard)
 
+        setupListener()
+        viewModel.role.observe(this, this::observerRole)
+    }
+
+    private fun setupListener() {
+        with(binding) {
+            more.setOnClickListener(this@DashboardActivity)
+            menu1.setOnClickListener(this@DashboardActivity)
+            menu2.setOnClickListener(this@DashboardActivity)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -51,11 +65,6 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>() {
                 }
             }
             .setNegativeButton(android.R.string.cancel, null).show()
-        viewModel.role.observe(this, this::observerRole)
-
-//        TODO CALL THIS PART IN ONCLICK ACTION WHEN WANT TO MOVE ACTIVITY
-//        viewModel.route = DashboardRoutes.CHAT
-//        viewModel.checkRoleUser()
     }
 
     private fun observerRole(role: String?) {
@@ -68,15 +77,14 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>() {
         }
     }
 
-    //    TODO DIRECTION TO CHAT OR MAP USER ACTIVITY
     private fun moveToActivityAsUser() {
         viewModel.route?.let {
             when (it) {
                 DashboardRoutes.MAP -> {
-//                    startActivity(Intent(this, SignInActivity::class.java))
+                    startActivity(Intent(this, DesaBinaanActivity::class.java))
                 }
                 DashboardRoutes.CHAT -> {
-//                    startActivity(Intent(this, RegisterActivity::class.java))
+                    startActivity(Intent(this, RuangAmanActivity::class.java))
                 }
             }
         }
@@ -92,6 +100,25 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>() {
                 DashboardRoutes.CHAT -> {
 //                    startActivity(Intent(this, RegisterActivity::class.java))
                 }
+            }
+        }
+    }
+
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.more -> {
+                val uri = Uri.parse(getString(R.string.instagram))
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
+            }
+
+            R.id.menu1 -> {
+                viewModel.route = DashboardRoutes.CHAT
+                viewModel.checkRoleUser()
+            }
+
+            R.id.menu2 -> {
+                viewModel.route = DashboardRoutes.MAP
+                viewModel.checkRoleUser()
             }
         }
     }

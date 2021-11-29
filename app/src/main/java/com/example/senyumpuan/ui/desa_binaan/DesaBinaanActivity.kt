@@ -1,12 +1,14 @@
 package com.example.senyumpuan.ui.desa_binaan
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.senyumpuan.R
+import com.example.senyumpuan.databinding.ActivityDesaBinaanBinding
+import com.example.senyumpuan.ui.BaseActivity
 
-class DesaBinaanActivity : AppCompatActivity() {
+class DesaBinaanActivity : BaseActivity<ActivityDesaBinaanBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_desa_binaan)
     }
+
+    override fun getViewBinding(): ActivityDesaBinaanBinding =
+        ActivityDesaBinaanBinding.inflate(layoutInflater)
 }

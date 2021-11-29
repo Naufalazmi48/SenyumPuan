@@ -50,4 +50,8 @@
     <string name="role_admin">admin</string>
     <string name="role_user">user</string>
 
+    <!--    Social Media-->
+    <string name="instagram">https://www.instagram.com/senyumpuan/</string>
+    <string name="title_admin">Admin</string>
+
 </resources>
