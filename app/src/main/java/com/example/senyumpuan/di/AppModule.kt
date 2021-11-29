@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val useCaseModule = module {
-    factory<ChatUseCase> { ChatInteractor(get()) }
+    factory<ChatUseCase> { ChatInteractor(get(), get()) }
     factory<DesaBinaanUseCase> { DesaBinaanInteractor(get()) }
     factory<UserUseCase> { UserInteractor(get()) }
 }

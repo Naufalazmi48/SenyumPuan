@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.callbackFlow
 
 @ExperimentalCoroutinesApi
 class RemoteDataSource(private val mDbRef: DatabaseReference, private val mAuth: FirebaseAuth) {
+
     fun getChats(userId: String): Flow<ApiResponse<List<ChatResponse>>> = callbackFlow {
         mDbRef.child(CHATS_PATH).child(userId).child(MESSAGES_PATH).addValueEventListener(
             object : ValueEventListener {
@@ -31,6 +32,34 @@ class RemoteDataSource(private val mDbRef: DatabaseReference, private val mAuth:
                         val chat = it.getValue(ChatResponse::class.java)
                         if (chat != null) {
                             listChat.add(chat)
+                        }
+                    }
+
+                    if (listChat.isNullOrEmpty()) trySend(ApiResponse.Empty)
+                    else trySend(ApiResponse.Success(listChat.toList()))
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e(TAG_FIREBASE, error.message)
+                    trySend(ApiResponse.Error(FAILED_TO_CONNECT))
+                }
+            }
+        )
+        awaitClose { close() }
+    }
+
+    fun getChatAllUser(): Flow<ApiResponse<List<ChatResponse>>> = callbackFlow {
+        mDbRef.child(CHATS_PATH).addValueEventListener(
+            object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    val listChat = arrayListOf<ChatResponse>()
+
+                    snapshot.children.forEach {
+                        it.key?.let { key ->
+                            val children = snapshot.child(key).child(MESSAGES_PATH).children.last()
+                            val chat = children.getValue(ChatResponse::class.java)
+                            chat?.let { message -> listChat.add(message) }
                         }
                     }
 
@@ -127,8 +156,9 @@ class RemoteDataSource(private val mDbRef: DatabaseReference, private val mAuth:
         awaitClose { close() }
     }
 
-    fun getUser(userId: String): Flow<ApiResponse<UserResponse>> = callbackFlow {
-        mDbRef.child(USERS_PATH).child(userId).addListenerForSingleValueEvent(
+    fun getUser(userId: String?): Flow<ApiResponse<UserResponse>> = callbackFlow {
+        val id = userId ?: mAuth.uid
+        mDbRef.child(USERS_PATH).child(id.toString()).addListenerForSingleValueEvent(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val data = snapshot.getValue(UserResponse::class.java)
