@@ -11,8 +11,11 @@ data class ChatResponse(
 	val receiverId: String? = null,
 
 	@field:SerializedName("dateTimeSend")
-	val dateTimeSend: String? = null,
+	val dateTimeSend: Long? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,
+
+	@field:SerializedName("senderRole")
+	val senderRole: String? = null,
 )

@@ -16,5 +16,7 @@ data class UserResponse(
     @field:SerializedName("age")
     val age: Int? = null,
     @field:SerializedName("phoneNumber")
-    val phoneNumber: String? = null
+    val phoneNumber: String? = null,
+    @field:SerializedName("role")
+    val role: String? = null
 )

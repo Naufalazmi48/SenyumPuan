@@ -14,8 +14,9 @@ object Mapper {
             Chat(
                 senderId = it.senderId ?: "",
                 receiverId = it.receiverId ?: "",
-                dateTimeSend = it.dateTimeSend ?: "",
-                message = it.message ?: ""
+                dateTimeSend = it.dateTimeSend ?: 0L,
+                message = it.message ?: "",
+                senderRole = it.senderRole ?: "user"
             )
         }
 
@@ -36,7 +37,8 @@ object Mapper {
             email = userResponse.email ?: "",
             address = userResponse.address ?: "",
             gender = userResponse.gender ?: "",
-            age = userResponse.age ?: -1,
-            phoneNumber = userResponse.phoneNumber ?: ""
+            age = userResponse.age ?: 0,
+            phoneNumber = userResponse.phoneNumber ?: "",
+            role = userResponse.role ?: "user"
         )
 }

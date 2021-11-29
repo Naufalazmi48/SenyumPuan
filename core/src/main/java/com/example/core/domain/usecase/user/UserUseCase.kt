@@ -9,4 +9,5 @@ interface UserUseCase {
     fun register(user: User, password: String): Flow<Resource<Boolean>>
     fun isLogginedUser(): Boolean
     fun signOut(): Boolean
+    fun getUser(userId: String? = null): Flow<Resource<User>>
 }

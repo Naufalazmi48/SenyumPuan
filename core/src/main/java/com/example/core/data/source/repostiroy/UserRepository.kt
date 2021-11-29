@@ -8,6 +8,7 @@ import com.example.core.domain.repository.IUserRepository
 import com.example.core.utils.FAILED_AUTHENTICATION
 import com.example.core.utils.FAILED_REGISTRATION
 import com.example.core.utils.Mapper.mapUserResponseToDomain
+import com.example.core.utils.NEED_CONNECTION
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -48,11 +49,11 @@ class UserRepository(private val remoteDataSource: RemoteDataSource): IUserRepos
         }
     }
 
-    override fun getUser(userId: String): Flow<Resource<User>> = flow {
+    override fun getUser(userId: String?): Flow<Resource<User>> = flow {
         emit(Resource.Loading())
         remoteDataSource.getUser(userId).collect {
             when (it) {
-                is ApiResponse.Empty -> emit(Resource.Error<User>("Data is empty"))
+                is ApiResponse.Empty -> emit(Resource.Error<User>(NEED_CONNECTION))
                 is ApiResponse.Error -> emit(Resource.Error<User>(it.errorMessage))
                 is ApiResponse.Success -> emit(Resource.Success<User>(mapUserResponseToDomain(it.data)))
             }
