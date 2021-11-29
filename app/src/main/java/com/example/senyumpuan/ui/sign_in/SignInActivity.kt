@@ -25,6 +25,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(), View.OnClickListen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        supportActionBar?.hide()
         setupListener()
         viewModel.login.observe(this, this::loginObserver)
     }

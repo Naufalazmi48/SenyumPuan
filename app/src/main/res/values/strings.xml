@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SenyumPuan</string>
+    <string name="app_name">Senyum Puan</string>
     <string name="btn_sign_in">Masuk</string>
     <string name="no_account">Belum punya akun?</string>
     <string name="register">Daftar</string>
@@ -35,4 +35,14 @@
     <string name="empty_password">Password tidak boleh kosong</string>
     <string name="password_must_six_digit">Password tidak boleh kurang dari 6 digit</string>
 
+    <string name="summary">Komunitas Senyum Puan kini hadir di tengah masyarakat Indonesia, khususnya NTB. Menyoroti isu perempuan, komunitas ini memiliki 3 fokus utama, yaitu pemberdayaan perempuan, penghubung penyintas dengan profesional, dan edukasi masyarakat.</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="more_detail"><![CDATA[Selengkapnya >>]]></string>
+    <string name="tv_menu">Menu</string>
+    <string name="menu1">Ruang Aman</string>
+    <string name="menu2">Desa Binaan</string>
+    <string name="desc_menu1">Konsultasikan masalahmu dengan kami</string>
+    <string name="desc_menu2">Lihat daftar desa yang pernah kami kunjungi</string>
+    <string name="sign_out">Keluar</string>
+    <string name="alert_message">Apakah kamu yakin ingin keluar?</string>
 </resources>
