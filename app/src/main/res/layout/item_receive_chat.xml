@@ -14,12 +14,13 @@
         android:paddingTop="4dp"
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/black"
+        android:textColor="@color/pink"
         android:textSize="13.5sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_max="wrap"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        />
 
     <TextView
         android:id="@+id/text_message_incoming_time"
@@ -29,6 +30,6 @@
         app:layout_constraintLeft_toRightOf="@id/text_message_incoming"
         android:layout_marginStart="2dp"
         android:textSize="11sp"
-        android:textColor="@color/white"
+        android:textColor="@color/pink"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

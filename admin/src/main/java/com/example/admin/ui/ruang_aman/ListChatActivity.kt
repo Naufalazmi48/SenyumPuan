@@ -26,5 +26,4 @@ class ListChatActivity : BaseActivity<ActivityListChatBinding>() {
     override fun getViewBinding(): ActivityListChatBinding =
         ActivityListChatBinding.inflate(layoutInflater)
 
-//    TODO BUAT LAYOUT ITEM CHAT && LAYOUT CHAT
 }
