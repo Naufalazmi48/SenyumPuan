@@ -8,6 +8,7 @@ import com.example.core.domain.usecase.user.UserInteractor
 import com.example.core.domain.usecase.user.UserUseCase
 import com.example.senyumpuan.ui.DashboardViewModel
 import com.example.senyumpuan.ui.register.RegisterViewModel
+import com.example.senyumpuan.ui.ruang_aman.RuangAmanViewModel
 import com.example.senyumpuan.ui.sign_in.SignInViewModel
 import com.example.senyumpuan.ui.splashscreen.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -24,4 +25,5 @@ val viewModelModule = module {
     viewModel { SignInViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
     viewModel { DashboardViewModel(get()) }
+    viewModel { RuangAmanViewModel(get(), get()) }
 }

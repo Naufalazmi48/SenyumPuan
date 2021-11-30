@@ -54,5 +54,6 @@
     <string name="instagram">https://www.instagram.com/senyumpuan/</string>
     <string name="title_admin">Admin</string>
     <string name="enter_message">Tulis pesan</string>
+    <string name="speech_to_text_desc">Katakan pesan yang ingin anda tuliskan</string>
 
 </resources>

@@ -84,7 +84,9 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>(), View.OnClick
                     startActivity(Intent(this, DesaBinaanActivity::class.java))
                 }
                 DashboardRoutes.CHAT -> {
-                    startActivity(Intent(this, RuangAmanActivity::class.java))
+                    startActivity(
+                        Intent(this, RuangAmanActivity::class.java)
+                    )
                 }
             }
         }
@@ -98,7 +100,12 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>(), View.OnClick
 //                    startActivity(Intent(this, SignInActivity::class.java))
                 }
                 DashboardRoutes.CHAT -> {
-//                    startActivity(Intent(this, RegisterActivity::class.java))
+                    startActivity(
+                        Intent(
+                            this,
+                            Class.forName("com.example.admin.ui.ruang_aman.ListChatActivity")
+                        )
+                    )
                 }
             }
         }
