@@ -26,7 +26,8 @@ object Mapper {
                 name = it.name ?: "",
                 progress = it.progress ?: 0,
                 latitude = it.latitude ?: 0.0,
-                longitude = it.longitude ?: 0.0
+                longitude = it.longitude ?: 0.0,
+                pictures = it.pictures ?: emptyList()
             )
         }
 

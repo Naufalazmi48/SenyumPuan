@@ -7,6 +7,7 @@ import com.example.core.domain.usecase.maps.DesaBinaanUseCase
 import com.example.core.domain.usecase.user.UserInteractor
 import com.example.core.domain.usecase.user.UserUseCase
 import com.example.senyumpuan.ui.DashboardViewModel
+import com.example.senyumpuan.ui.desa_binaan.DesaBinaanViewModel
 import com.example.senyumpuan.ui.register.RegisterViewModel
 import com.example.senyumpuan.ui.ruang_aman.RuangAmanViewModel
 import com.example.senyumpuan.ui.sign_in.SignInViewModel
@@ -25,5 +26,6 @@ val viewModelModule = module {
     viewModel { SignInViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
     viewModel { DashboardViewModel(get()) }
+    viewModel { DesaBinaanViewModel(get()) }
     viewModel { RuangAmanViewModel(get(), get()) }
 }

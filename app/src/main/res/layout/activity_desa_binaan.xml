@@ -5,8 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.desa_binaan.DesaBinaanActivity">
+
     <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/map_box"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:mapbox_cameraTargetLat="-8.5888745"
+        app:mapbox_cameraTargetLng="116.264195"
+        app:mapbox_cameraZoom="8"
         />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/pink"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

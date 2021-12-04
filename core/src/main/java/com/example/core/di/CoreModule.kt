@@ -1,9 +1,9 @@
 package com.example.core.di
 
 import com.example.core.data.source.remote.RemoteDataSource
-import com.example.core.data.source.repostiroy.ChatRepository
-import com.example.core.data.source.repostiroy.MapRepository
-import com.example.core.data.source.repostiroy.UserRepository
+import com.example.core.data.source.repository.ChatRepository
+import com.example.core.data.source.repository.MapRepository
+import com.example.core.data.source.repository.UserRepository
 import com.example.core.domain.repository.IChatRepository
 import com.example.core.domain.repository.IMapsRepository
 import com.example.core.domain.repository.IUserRepository

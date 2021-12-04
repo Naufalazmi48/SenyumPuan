@@ -41,7 +41,9 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
     private fun registerObserver(result: Resource<Boolean>) {
         when (result) {
             is Resource.Error -> {
-                Snackbar.make(binding.root, "${result.message}", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, "${result.message}", Snackbar.LENGTH_SHORT)
+                    .setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
+                    .show()
                 binding.progressBar.isVisible = false
             }
             is Resource.Loading -> {
@@ -117,11 +119,31 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
 
     private fun showErrorMessage() {
         with(binding) {
-            formErrorHandler(name, edtName.text.toString().isEmpty(), getString(R.string.empty_name))
-            formErrorHandler(email, edtEmail.text.toString().isEmpty(), getString(R.string.empty_email))
-            formErrorHandler(gender, dropGender.text.toString().isEmpty(), getString(R.string.empty_gender))
-            formErrorHandler(phone, edtPhone.text.toString().isEmpty(), getString(R.string.empty_hp))
-            formErrorHandler(address, edtAddress.text.toString().isEmpty(), getString(R.string.empty_address))
+            formErrorHandler(
+                name,
+                edtName.text.toString().isEmpty(),
+                getString(R.string.empty_name)
+            )
+            formErrorHandler(
+                email,
+                edtEmail.text.toString().isEmpty(),
+                getString(R.string.empty_email)
+            )
+            formErrorHandler(
+                gender,
+                dropGender.text.toString().isEmpty(),
+                getString(R.string.empty_gender)
+            )
+            formErrorHandler(
+                phone,
+                edtPhone.text.toString().isEmpty(),
+                getString(R.string.empty_hp)
+            )
+            formErrorHandler(
+                address,
+                edtAddress.text.toString().isEmpty(),
+                getString(R.string.empty_address)
+            )
             formErrorHandler(
                 age,
                 edtAge.text.toString().isEmpty(),

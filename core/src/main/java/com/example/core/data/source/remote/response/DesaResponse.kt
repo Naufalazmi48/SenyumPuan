@@ -11,4 +11,6 @@ data class DesaResponse(
     val latitude: Double? = null,
     @field:SerializedName("longitude")
     val longitude: Double? = null,
+    @field:SerializedName("pictures")
+    val pictures: List<String>? = null,
 )

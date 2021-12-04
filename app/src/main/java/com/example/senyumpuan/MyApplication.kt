@@ -5,6 +5,7 @@ import com.example.core.di.firebaseModule
 import com.example.core.di.repositoryModule
 import com.example.senyumpuan.di.useCaseModule
 import com.example.senyumpuan.di.viewModelModule
+import com.mapbox.mapboxsdk.Mapbox
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -18,5 +19,7 @@ class MyApplication: Application() {
             modules(useCaseModule)
             modules(viewModelModule)
         }
+
+        Mapbox.getInstance(this, BuildConfig.API_KEY)
     }
 }

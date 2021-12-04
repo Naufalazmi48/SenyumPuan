@@ -92,12 +92,11 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>(), View.OnClick
         }
     }
 
-    //    TODO DIRECTION TO CHAT OR MAP ADMIN ACTIVITY
     private fun moveToActivityAsAdmin() {
         viewModel.route?.let {
             when (it) {
                 DashboardRoutes.MAP -> {
-//                    startActivity(Intent(this, SignInActivity::class.java))
+                    startActivity(Intent(this, DesaBinaanActivity::class.java))
                 }
                 DashboardRoutes.CHAT -> {
                     startActivity(

@@ -1,4 +1,4 @@
-package com.example.core.data.source.repostiroy
+package com.example.core.data.source.repository
 
 import com.example.core.data.Resource
 import com.example.core.data.source.remote.RemoteDataSource

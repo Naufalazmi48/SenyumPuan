@@ -5,4 +5,5 @@ data class Desa(
     val progress: Int,
     val latitude: Double,
     val longitude: Double,
+    val pictures: List<String> = ArrayList()
 )
