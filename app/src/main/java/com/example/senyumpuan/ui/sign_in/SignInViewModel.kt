@@ -1,5 +1,6 @@
 package com.example.senyumpuan.ui.sign_in
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class SignInViewModel(private val useCase: UserUseCase): ViewModel() {
     private val _login = MutableLiveData<Resource<Boolean>>()
-    val login = _login
+    val login : LiveData<Resource<Boolean>> = _login
 
     fun login(email: String, password: String){
         viewModelScope.launch {

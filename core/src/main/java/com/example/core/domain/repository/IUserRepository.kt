@@ -12,4 +12,5 @@ interface IUserRepository {
     fun isLogginedUser():Boolean
     fun isVerifiedEmail():Boolean
     fun sendEmailVerification()
+    fun signOut(): Boolean
 }

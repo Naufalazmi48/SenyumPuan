@@ -66,4 +66,6 @@ class UserRepository(private val remoteDataSource: RemoteDataSource): IUserRepos
     override fun sendEmailVerification() {
         remoteDataSource.sendEmailVerification()
     }
+
+    override fun signOut(): Boolean = remoteDataSource.signOut()
 }

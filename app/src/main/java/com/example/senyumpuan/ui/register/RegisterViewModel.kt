@@ -1,5 +1,6 @@
 package com.example.senyumpuan.ui.register
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class RegisterViewModel(private val useCase: UserUseCase): ViewModel(){
     private val _register = MutableLiveData<Resource<Boolean>>()
-    val register = _register
+    val register: LiveData<Resource<Boolean>> = _register
 
     fun register(user: User, password: String){
         viewModelScope.launch {

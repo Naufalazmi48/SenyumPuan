@@ -11,10 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SenyumPuan">
         <activity
+            android:name=".ui.desa_binaan.DesaBinaanActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.ruang_aman.RuangAmanActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.DashboardActivity"
             android:exported="true" />
         <activity
             android:name=".ui.sign_in.SignInActivity"
