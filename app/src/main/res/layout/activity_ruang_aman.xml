@@ -40,12 +40,13 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
+                android:background="@color/white"
                 android:hint="@string/enter_message"
-                android:textColorHint="@color/opacity"
-                android:textColor="@color/white"
+                android:textColorHint="@color/pink"
+                android:textColor="@color/pink"
                 android:inputType="textMultiLine"
                 android:maxLines="6"
+                android:padding="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_microphone"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -78,7 +79,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/btn_microphone"
                 tools:ignore="contentDescription"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
