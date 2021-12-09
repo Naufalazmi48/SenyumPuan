@@ -1,34 +1,59 @@
 package com.example.senyumpuan.ui.desa_binaan
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.core.domain.model.Desa
 import com.example.senyumpuan.R
+import com.example.senyumpuan.databinding.FragmentDetailDesaBinaanBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.smarteist.autoimageslider.SliderView
 
 
+class DetailDesaBinaanFragment : BottomSheetDialogFragment() {
 
-
-class DetailDesaBinaanFragment : Fragment() {
+    private var _binding: FragmentDetailDesaBinaanBinding? = null
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val imageSlider: SliderView = view.findViewById<View>(R.id.image_slider) as SliderView
-        val imageList: ArrayList<String> = ArrayList()
-        imageList.add("")
-        imageList.add("https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg")
-        imageList.add("https://media.istockphoto.com/photos/child-hands-formig-heart-shape-picture-id951945718?k=6&m=951945718&s=612x612&w=0&h=ih-N7RytxrTfhDyvyTQCA5q5xKoJToKSYgdsJ_mHrv0=")
-        setImageInSlider(imageList, imageSlider)
+        arguments?.getParcelable<Desa>(DETAIL_DATA)?.let { desa ->
+
+            setupScrollListener()
+
+            with(binding) {
+                villageName.text = desa.name
+                villageAbout.text = desa.description
+                villageAbout.movementMethod = ScrollingMovementMethod()
+                imageSlider.apply {
+                    val arrayListUrl = ArrayList<String>().apply { addAll(desa.pictures) }
+                    setImageInSlider(arrayListUrl, this)
+                }
+            }
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setupScrollListener() {
+        with(binding) {
+            villageAbout.setOnTouchListener { _, _ ->
+                villageAbout.parent.requestDisallowInterceptTouchEvent(true)
+                false
+            }
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_detail_desa_binaan, container, false)
+    ): View {
+        _binding = FragmentDetailDesaBinaanBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     private fun setImageInSlider(images: ArrayList<String>, imageSlider: SliderView) {
@@ -37,6 +62,16 @@ class DetailDesaBinaanFragment : Fragment() {
         imageSlider.setSliderAdapter(adapter)
         imageSlider.isAutoCycle = true
         imageSlider.startAutoCycle()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    companion object {
+        const val TAG = "BOTTOM_SHEET_TAG"
+        const val DETAIL_DATA = "DETAIL_DATA"
     }
 
 }

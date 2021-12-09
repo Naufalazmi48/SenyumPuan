@@ -24,7 +24,7 @@ object Mapper {
         list.map {
             Desa(
                 name = it.name ?: "",
-                progress = it.progress ?: 0,
+                description = it.description ?: "",
                 latitude = it.latitude ?: 0.0,
                 longitude = it.longitude ?: 0.0,
                 pictures = it.pictures ?: emptyList()

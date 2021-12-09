@@ -8,6 +8,8 @@ import com.example.core.domain.model.Desa
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.ActivityDesaBinaanBinding
 import com.example.senyumpuan.ui.BaseActivity
+import com.example.senyumpuan.ui.desa_binaan.DetailDesaBinaanFragment.Companion.DETAIL_DATA
+import com.example.senyumpuan.ui.desa_binaan.DetailDesaBinaanFragment.Companion.TAG
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.mapbox.mapboxsdk.geometry.LatLng
@@ -80,6 +82,14 @@ class DesaBinaanActivity : BaseActivity<ActivityDesaBinaanBinding>() {
             symbolManager.addClickListener { symbol ->
                 val desa = Gson().fromJson(symbol.data, Desa::class.java)
 //                TODO MOVE TO FRAGMENT AND PASSING DATA DESA
+                val dialogFragment = DetailDesaBinaanFragment().apply {
+                    arguments = Bundle().apply {
+                        putParcelable(
+                            DETAIL_DATA, desa
+                        )
+                    }
+                }
+                dialogFragment.show(supportFragmentManager, TAG)
             }
         }
     }

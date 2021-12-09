@@ -1,5 +1,6 @@
 package com.example.core.data.source.remote
 
+import android.net.Uri
 import android.util.Log
 import com.example.core.data.source.remote.network.ApiResponse
 import com.example.core.data.source.remote.response.ChatResponse
@@ -14,13 +15,15 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import java.util.*
 
 @ExperimentalCoroutinesApi
-class RemoteDataSource(private val mDbRef: DatabaseReference, private val mAuth: FirebaseAuth) {
+class RemoteDataSource(private val mDbRef: DatabaseReference, private val mAuth: FirebaseAuth, private val mStorageRef: StorageReference) {
 
     fun getChats(userId: String): Flow<ApiResponse<List<ChatResponse>>> = callbackFlow {
         mDbRef.child(CHATS_PATH).child(userId).child(MESSAGES_PATH).addValueEventListener(
@@ -192,11 +195,34 @@ class RemoteDataSource(private val mDbRef: DatabaseReference, private val mAuth:
         Log.e(TAG_FIREBASE, e.message ?: "")
         false
     }
+
+    fun uploadImage(villageName: String, uri: Uri): Flow<ApiResponse<String>> =
+        callbackFlow {
+            try {
+                val ref = mStorageRef.child(villageName).child(IMAGES_PATH)
+                    .child(UUID.randomUUID().toString())
+                ref.putFile(uri)
+                    .addOnCompleteListener {
+                        ref.downloadUrl.addOnSuccessListener { uri ->
+                            trySend(ApiResponse.Success(uri.toString()))
+                        }
+                    }
+                    .addOnFailureListener { error ->
+                        Log.e(TAG_FIREBASE, error.message.toString())
+                        trySend(ApiResponse.Error(FAILED_UPLOAD_IMAGE))
+                    }
+            } catch (e: Exception) {
+                print(e.message)
+            }
+
+            awaitClose { close() }
+        }
     
     companion object {
         private const val DESA_BINAAN_PATH = "maps/desa_binaan"
         private const val CHATS_PATH = "chats"
         private const val USERS_PATH = "users"
         private const val MESSAGES_PATH = "messages"
+        private const val IMAGES_PATH = "images"
     }
 }

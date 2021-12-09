@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     style="@style/SplashBackground"
     tools:context=".ui.desa_binaan.AddDesaBinaanActivity">
 
@@ -31,7 +32,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="28dp"
-            android:background=""
             android:hint="@string/tv_nama"
             android:textColorHint="@color/pink"
             app:boxCornerRadiusBottomEnd="10dp"
@@ -68,7 +68,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_latitude"
                 android:layout_width="match_parent"
-                android:background="w"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>

@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.example.senyumpuan.R
 import com.smarteist.autoimageslider.SliderViewAdapter
-import com.squareup.picasso.Picasso
 
 class SliderAdapter():
     SliderViewAdapter<SliderAdapter.VH>() {
@@ -22,13 +22,15 @@ class SliderAdapter():
     }
 
     override fun onCreateViewHolder(parent: ViewGroup): VH {
-        val inflate: View = LayoutInflater.from(parent.context).inflate(R.layout.image_holder, null)
+        val inflate: View = LayoutInflater.from(parent.context).inflate(R.layout.image_holder, parent, false)
         return VH(inflate)
     }
 
     override fun onBindViewHolder(viewHolder: VH, position: Int) {
-        //load image into view
-        Picasso.get().load(mSliderItems[position]).fit().into(viewHolder.imageView)
+        Glide.with(viewHolder.itemView)
+            .load(mSliderItems[position])
+            .fitCenter()
+            .into(viewHolder.imageView)
     }
 
     override fun getCount(): Int {
