@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.ActivityDashboardBinding
 import com.example.senyumpuan.ui.desa_binaan.DesaBinaanActivity
+import com.example.senyumpuan.ui.desa_binaan.DesaBinaanActivity.Companion.ROLE_USER
 import com.example.senyumpuan.ui.ruang_aman.RuangAmanActivity
 import com.example.senyumpuan.ui.sign_in.SignInActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,7 +46,7 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>(), View.OnClick
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.sign_out){
+        if (item.itemId == R.id.sign_out) {
             showAlertSignOut()
         }
         return super.onOptionsItemSelected(item)
@@ -56,12 +57,14 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>(), View.OnClick
             .setTitle(getString(R.string.sign_out))
             .setMessage(getString(R.string.alert_message))
             .setIcon(R.drawable.ic_warning)
-            .setPositiveButton(android.R.string.ok
+            .setPositiveButton(
+                android.R.string.ok
             ) { _, _ ->
-                if (viewModel.signOut()){
+                if (viewModel.signOut()) {
                     startActivity(
                         Intent(this, SignInActivity::class.java)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    )
                 }
             }
             .setNegativeButton(android.R.string.cancel, null).show()
@@ -96,7 +99,12 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>(), View.OnClick
         viewModel.route?.let {
             when (it) {
                 DashboardRoutes.MAP -> {
-                    startActivity(Intent(this, DesaBinaanActivity::class.java))
+                    startActivity(Intent(this, DesaBinaanActivity::class.java).apply {
+                        putExtra(
+                            ROLE_USER,
+                            getString(R.string.role_admin)
+                        )
+                    })
                 }
                 DashboardRoutes.CHAT -> {
                     startActivity(

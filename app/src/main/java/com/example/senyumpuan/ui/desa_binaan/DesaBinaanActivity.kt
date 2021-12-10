@@ -1,5 +1,6 @@
 package com.example.senyumpuan.ui.desa_binaan
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
@@ -25,8 +26,21 @@ class DesaBinaanActivity : BaseActivity<ActivityDesaBinaanBinding>() {
 
     private val desaBinaanViewModel: DesaBinaanViewModel by viewModel()
 
+    override fun getViewBinding(): ActivityDesaBinaanBinding =
+        ActivityDesaBinaanBinding.inflate(layoutInflater)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.title = getString(R.string.desa_binaan)
+
+        intent.getStringExtra(ROLE_USER)?.let { role ->
+            if (role.contains(getString(R.string.role_admin), true)) {
+                binding.fabAddDesaBinaan.isVisible = true
+
+                setupFabListener()
+            }
+        }
 
         binding.mapBox.getMapAsync { map ->
             this.mapBox = map
@@ -36,8 +50,24 @@ class DesaBinaanActivity : BaseActivity<ActivityDesaBinaanBinding>() {
         }
     }
 
-    override fun getViewBinding(): ActivityDesaBinaanBinding =
-        ActivityDesaBinaanBinding.inflate(layoutInflater)
+    override fun onResume() {
+        super.onResume()
+
+        if (this::mapBox.isInitialized) {
+            desaBinaanViewModel.getLocationDesaBinaan()
+        }
+    }
+
+    private fun setupFabListener() {
+        binding.fabAddDesaBinaan.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    Class.forName("com.example.admin.ui.desa_binaan.AddDesaBinaanActivity")
+                )
+            )
+        }
+    }
 
     private fun mapsObserver(listDesa: Resource<List<Desa>>) {
         when (listDesa) {
@@ -81,7 +111,6 @@ class DesaBinaanActivity : BaseActivity<ActivityDesaBinaanBinding>() {
 
             symbolManager.addClickListener { symbol ->
                 val desa = Gson().fromJson(symbol.data, Desa::class.java)
-//                TODO MOVE TO FRAGMENT AND PASSING DATA DESA
                 val dialogFragment = DetailDesaBinaanFragment().apply {
                     arguments = Bundle().apply {
                         putParcelable(
@@ -96,5 +125,6 @@ class DesaBinaanActivity : BaseActivity<ActivityDesaBinaanBinding>() {
 
     companion object {
         const val ID_ICON = "ID_ICON"
+        const val ROLE_USER = "ROLE_USER"
     }
 }

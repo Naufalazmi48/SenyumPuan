@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".ui.desa_binaan.DetailDesaBinaanFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <com.smarteist.autoimageslider.SliderView
             android:id="@+id/image_slider"
@@ -33,8 +38,8 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:textStyle="bold"
-            app:layout_constraintRight_toRightOf="@id/image_slider"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/image_slider"
             app:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
         <TextView
@@ -43,12 +48,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="12dp"
-            android:paddingBottom="24dp"
             android:lines="5"
+            android:paddingBottom="24dp"
             android:scrollbars="vertical"
-            app:layout_constraintRight_toRightOf="@id/image_slider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/image_slider"
             app:layout_constraintTop_toBottomOf="@+id/village_name" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

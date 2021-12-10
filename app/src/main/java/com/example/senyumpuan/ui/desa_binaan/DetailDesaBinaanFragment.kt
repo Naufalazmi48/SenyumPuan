@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.example.core.domain.model.Desa
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.FragmentDetailDesaBinaanBinding
+import com.example.senyumpuan.utils.Helper.setScrollable
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.smarteist.autoimageslider.SliderView
 
@@ -24,26 +25,14 @@ class DetailDesaBinaanFragment : BottomSheetDialogFragment() {
 
         arguments?.getParcelable<Desa>(DETAIL_DATA)?.let { desa ->
 
-            setupScrollListener()
-
             with(binding) {
                 villageName.text = desa.name
                 villageAbout.text = desa.description
-                villageAbout.movementMethod = ScrollingMovementMethod()
+                villageAbout.setScrollable()
                 imageSlider.apply {
                     val arrayListUrl = ArrayList<String>().apply { addAll(desa.pictures) }
                     setImageInSlider(arrayListUrl, this)
                 }
-            }
-        }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    private fun setupScrollListener() {
-        with(binding) {
-            villageAbout.setOnTouchListener { _, _ ->
-                villageAbout.parent.requestDisallowInterceptTouchEvent(true)
-                false
             }
         }
     }

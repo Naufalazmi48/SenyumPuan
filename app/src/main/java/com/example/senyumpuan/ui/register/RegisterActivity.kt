@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.core.data.Resource
 import com.example.core.domain.model.User
-import com.example.core.utils.Helper.formErrorHandler
-import com.example.core.utils.Helper.setAutoClearError
+import com.example.senyumpuan.utils.Helper.formErrorHandler
+import com.example.senyumpuan.utils.Helper.setAutoClearError
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.ActivityRegisterBinding
 import com.example.senyumpuan.ui.BaseActivity
@@ -71,7 +71,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
         }
     }
 
-    private fun validateForm(): Boolean =
+    private fun isValidForm(): Boolean =
         binding.edtName.text.toString().isNotEmpty() &&
                 binding.edtEmail.text.toString().isNotEmpty() &&
                 binding.dropGender.text.toString().isNotEmpty() &&
@@ -85,7 +85,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
     override fun onClick(v: View) {
         when (v.id) {
             R.id.register -> {
-                if (validateForm()) {
+                if (isValidForm()) {
                     val user = getUserForm()
                     val password = binding.edtPassword.text.toString()
 
