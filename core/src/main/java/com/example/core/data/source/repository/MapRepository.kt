@@ -19,8 +19,8 @@ class MapRepository(private val remoteDataSource: RemoteDataSource): IMapsReposi
         emit(Resource.Loading())
         remoteDataSource.getLocationDesaBinaan().collect {
             when (it) {
-                is ApiResponse.Empty -> emit(Resource.Success(emptyList<Desa>()))
-                is ApiResponse.Error -> emit(Resource.Error<List<Desa>>(it.errorMessage))
+                is ApiResponse.Empty -> emit(Resource.Success(emptyList()))
+                is ApiResponse.Error -> emit(Resource.Error(it.errorMessage))
                 is ApiResponse.Success -> emit(Resource.Success(Mapper.mapLocationResponseToDomain(it.data)))
             }
         }
@@ -29,8 +29,8 @@ class MapRepository(private val remoteDataSource: RemoteDataSource): IMapsReposi
     override suspend fun uploadImage(villageName: String, uri: Uri): Flow<Resource<String>> = flow {
         remoteDataSource.uploadImage(villageName, uri).collect {
             when (it) {
-                is ApiResponse.Empty -> emit(Resource.Error<String>(FAILED_UPLOAD_IMAGE))
-                is ApiResponse.Error -> emit(Resource.Error<String>(it.errorMessage))
+                is ApiResponse.Empty -> emit(Resource.Error(FAILED_UPLOAD_IMAGE))
+                is ApiResponse.Error -> emit(Resource.Error(it.errorMessage))
                 is ApiResponse.Success -> emit(Resource.Success(it.data))
             }
         }

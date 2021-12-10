@@ -8,16 +8,11 @@ import com.bumptech.glide.Glide
 import com.example.senyumpuan.R
 import com.smarteist.autoimageslider.SliderViewAdapter
 
-class SliderAdapter():
+class SliderAdapter:
     SliderViewAdapter<SliderAdapter.VH>() {
     private var mSliderItems = ArrayList<String>()
     fun renewItems(sliderItems: ArrayList<String>) {
         mSliderItems = sliderItems
-        notifyDataSetChanged()
-    }
-
-    fun addItem(sliderItem: String) {
-        mSliderItems.add(sliderItem)
         notifyDataSetChanged()
     }
 

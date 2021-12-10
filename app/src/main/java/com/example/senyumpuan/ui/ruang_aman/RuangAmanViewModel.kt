@@ -26,7 +26,7 @@ class RuangAmanViewModel(
     private val _user = MutableLiveData<User>()
     val user:LiveData<User> = _user
 
-    fun getDataSender() {
+    private fun getDataSender() {
         viewModelScope.launch {
             userUseCase.getUser().collect {
                 it.data?.let { mUser ->

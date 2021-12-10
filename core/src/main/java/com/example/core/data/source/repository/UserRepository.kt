@@ -20,8 +20,8 @@ class UserRepository(private val remoteDataSource: RemoteDataSource): IUserRepos
         emit(Resource.Loading())
         remoteDataSource.registerUser(email, password).collect {
             when (it) {
-                is ApiResponse.Empty -> emit(Resource.Error<Boolean>(FAILED_REGISTRATION))
-                is ApiResponse.Error -> emit(Resource.Error<Boolean>(it.errorMessage))
+                is ApiResponse.Empty -> emit(Resource.Error(FAILED_REGISTRATION))
+                is ApiResponse.Error -> emit(Resource.Error(it.errorMessage))
                 is ApiResponse.Success -> emit(Resource.Success(true))
             }
         }
@@ -31,8 +31,8 @@ class UserRepository(private val remoteDataSource: RemoteDataSource): IUserRepos
         emit(Resource.Loading())
         remoteDataSource.loginUser(email, password).collect {
             when (it) {
-                is ApiResponse.Empty -> emit(Resource.Error<Boolean>(FAILED_AUTHENTICATION))
-                is ApiResponse.Error -> emit(Resource.Error<Boolean>(it.errorMessage))
+                is ApiResponse.Empty -> emit(Resource.Error(FAILED_AUTHENTICATION))
+                is ApiResponse.Error -> emit(Resource.Error(it.errorMessage))
                 is ApiResponse.Success -> emit(Resource.Success(it.data))
             }
         }
@@ -43,7 +43,7 @@ class UserRepository(private val remoteDataSource: RemoteDataSource): IUserRepos
         remoteDataSource.insertUser(user).collect {
             when (it) {
                 is ApiResponse.Empty -> emit(Resource.Success(false))
-                is ApiResponse.Error -> emit(Resource.Error<Boolean>(it.errorMessage))
+                is ApiResponse.Error -> emit(Resource.Error(it.errorMessage))
                 is ApiResponse.Success -> emit(Resource.Success(true))
             }
         }
@@ -53,9 +53,9 @@ class UserRepository(private val remoteDataSource: RemoteDataSource): IUserRepos
         emit(Resource.Loading())
         remoteDataSource.getUser(userId).collect {
             when (it) {
-                is ApiResponse.Empty -> emit(Resource.Error<User>(NEED_CONNECTION))
-                is ApiResponse.Error -> emit(Resource.Error<User>(it.errorMessage))
-                is ApiResponse.Success -> emit(Resource.Success<User>(mapUserResponseToDomain(it.data)))
+                is ApiResponse.Empty -> emit(Resource.Error(NEED_CONNECTION))
+                is ApiResponse.Error -> emit(Resource.Error(it.errorMessage))
+                is ApiResponse.Success -> emit(Resource.Success(mapUserResponseToDomain(it.data)))
             }
         }
     }

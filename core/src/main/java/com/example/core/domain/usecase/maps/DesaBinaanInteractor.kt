@@ -20,7 +20,7 @@ class DesaBinaanInteractor(private val mapsRepo: IMapsRepository): DesaBinaanUse
         desa.pictures.forEach { uriString ->
             mapsRepo.uploadImage(desa.name, Uri.parse(uriString)).take(1).collect { resource ->
                 if (resource is Resource.Error) {
-                    emit(Resource.Error<Boolean>(resource.message.toString()))
+                    emit(Resource.Error(resource.message.toString()))
                 } else {
                     resource.data?.let {
                         listDownloadUrl.add(it)

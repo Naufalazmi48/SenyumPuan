@@ -17,8 +17,8 @@ class ChatRepository(private val remoteDataSource: RemoteDataSource): IChatRepos
         emit(Resource.Loading())
             remoteDataSource.getChats(userId).collect {
                 when (it) {
-                    is ApiResponse.Empty -> emit(Resource.Success(emptyList<Chat>()))
-                    is ApiResponse.Error -> emit(Resource.Error<List<Chat>>(it.errorMessage))
+                    is ApiResponse.Empty -> emit(Resource.Success(emptyList()))
+                    is ApiResponse.Error -> emit(Resource.Error(it.errorMessage))
                     is ApiResponse.Success -> emit(Resource.Success(mapChatResponseToDomain(it.data)))
                 }
             }
@@ -32,8 +32,8 @@ class ChatRepository(private val remoteDataSource: RemoteDataSource): IChatRepos
         emit(Resource.Loading())
         remoteDataSource.getChatAllUser().collect {
             when (it) {
-                is ApiResponse.Empty -> emit(Resource.Success(emptyList<Chat>()))
-                is ApiResponse.Error -> emit(Resource.Error<List<Chat>>(it.errorMessage))
+                is ApiResponse.Empty -> emit(Resource.Success(emptyList()))
+                is ApiResponse.Error -> emit(Resource.Error(it.errorMessage))
                 is ApiResponse.Success -> emit(Resource.Success(mapChatResponseToDomain(it.data)))
             }
         }

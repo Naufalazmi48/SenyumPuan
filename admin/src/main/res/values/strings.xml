@@ -4,7 +4,6 @@
     <string name="add_latitude">Latitude</string>
     <string name="add_longitude">Longitude</string>
     <string name="add_about_village">Tentang Desa</string>
-    <string name="add_image">Masukkan Foto</string>
     <string name="btn_add_village">Tambah</string>
     <string name="empty_village_name">Nama Desa tidak boleh kosong</string>
     <string name="empty_latitude">Latitude tidak boleh kosong</string>

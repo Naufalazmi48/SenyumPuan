@@ -1,14 +1,10 @@
 package com.example.senyumpuan.ui.desa_binaan
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.core.domain.model.Desa
-import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.FragmentDetailDesaBinaanBinding
 import com.example.senyumpuan.utils.Helper.setScrollable
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
