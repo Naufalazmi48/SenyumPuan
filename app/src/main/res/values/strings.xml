@@ -59,5 +59,6 @@
     <string name="enter_message">Tulis pesan</string>
     <string name="speech_to_text_desc">Katakan pesan yang ingin anda tuliskan</string>
     <string name="desc_add_desa_binaan">Tambahkan desa binaan</string>
+    <string name="ruang_aman">Ruang Aman</string>
 
 </resources>

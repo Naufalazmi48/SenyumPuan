@@ -24,7 +24,8 @@ class SliderAdapter:
     override fun onBindViewHolder(viewHolder: VH, position: Int) {
         Glide.with(viewHolder.itemView)
             .load(mSliderItems[position])
-            .fitCenter()
+            .centerCrop()
+            .placeholder(R.drawable.ic_image_placeholder)
             .into(viewHolder.imageView)
     }
 

@@ -39,12 +39,15 @@
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/admin/src/main/res/layout/activity_add_desa_binaan.xml" value="0.33" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/admin/src/main/res/layout/activity_list_chat.xml" value="0.12907608695652173" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/admin/src/main/res/layout/item_image.xml" value="0.5" />
+        <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/drawable/chat_corner.xml" value="0.2203125" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/drawable/ic_add_image.xml" value="0.2203125" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/drawable/ic_location.xml" value="0.2203125" />
+        <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/drawable/receive_bubble_chat.xml" value="0.2203125" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/drawable/rounded_dialog.xml" value="0.2203125" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/activity_desa_binaan.xml" value="0.25" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/activity_ruang_aman.xml" value="0.25" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/activity_sign_in.xml" value="0.33" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/fragment_detail_desa_binaan.xml" value="0.2" />
         <entry key="..\:/Dicoding/Capstone/SenyumPuan/app/src/main/res/layout/image_holder.xml" value="0.17028985507246377" />

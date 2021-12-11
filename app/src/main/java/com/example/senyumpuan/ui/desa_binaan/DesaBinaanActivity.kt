@@ -11,6 +11,7 @@ import com.example.senyumpuan.databinding.ActivityDesaBinaanBinding
 import com.example.senyumpuan.ui.BaseActivity
 import com.example.senyumpuan.ui.desa_binaan.DetailDesaBinaanFragment.Companion.DETAIL_DATA
 import com.example.senyumpuan.ui.desa_binaan.DetailDesaBinaanFragment.Companion.TAG
+import com.example.senyumpuan.utils.Event
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.mapbox.mapboxsdk.geometry.LatLng
@@ -69,18 +70,20 @@ class DesaBinaanActivity : BaseActivity<ActivityDesaBinaanBinding>() {
         }
     }
 
-    private fun mapsObserver(listDesa: Resource<List<Desa>>) {
-        when (listDesa) {
-            is Resource.Error -> {
-                binding.loading.isVisible = false
-                Snackbar.make(binding.root, "${listDesa.message}", Snackbar.LENGTH_SHORT)
-                    .setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE).show()
-            }
-            is Resource.Loading -> binding.loading.isVisible = true
-            is Resource.Success -> {
-                binding.loading.isVisible = false
-                listDesa.data?.let {
-                    showMarker(it)
+    private fun mapsObserver(result: Event<Resource<List<Desa>>>) {
+        result.getContentIfNotHandled()?.let { listDesa ->
+            when (listDesa) {
+                is Resource.Error -> {
+                    binding.loading.isVisible = false
+                    Snackbar.make(binding.root, "${listDesa.message}", Snackbar.LENGTH_SHORT)
+                        .setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE).show()
+                }
+                is Resource.Loading -> binding.loading.isVisible = true
+                is Resource.Success -> {
+                    binding.loading.isVisible = false
+                    listDesa.data?.let {
+                        showMarker(it)
+                    }
                 }
             }
         }
