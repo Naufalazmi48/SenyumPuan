@@ -27,9 +27,10 @@ class AddDesaBinaanActivity : BaseActivity<ActivityAddDesaBinaanBinding>(), View
     }
 
     private val viewModel: AddDesaBinaanViewModel by inject()
-    private val selectImageFromGalleryResult = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let { viewModel.imagesUri.value = it }
-    }
+    private val selectImageFromGalleryResult =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let { viewModel.imagesUri.value = it }
+        }
     private lateinit var mAdapter: ImageAdapter
 
 
@@ -58,13 +59,21 @@ class AddDesaBinaanActivity : BaseActivity<ActivityAddDesaBinaanBinding>(), View
             when (resource) {
                 is Resource.Error -> {
                     loading.isVisible = false
-                    Toast.makeText(this@AddDesaBinaanActivity, getString(R.string.failed_add_desa), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@AddDesaBinaanActivity,
+                        getString(R.string.failed_add_desa),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 is Resource.Loading -> loading.isVisible = true
                 is Resource.Success -> {
                     loading.isVisible = false
 
-                    Toast.makeText(this@AddDesaBinaanActivity, getString(R.string.success_add_desa), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@AddDesaBinaanActivity,
+                        getString(R.string.success_add_desa),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                 }
             }
@@ -77,7 +86,11 @@ class AddDesaBinaanActivity : BaseActivity<ActivityAddDesaBinaanBinding>(), View
 
     private fun setupRecyclerView() {
         with(binding.rvImage) {
-            layoutManager = LinearLayoutManager(this@AddDesaBinaanActivity, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(
+                this@AddDesaBinaanActivity,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
             adapter = mAdapter
         }
     }
@@ -118,6 +131,14 @@ class AddDesaBinaanActivity : BaseActivity<ActivityAddDesaBinaanBinding>(), View
                 edtSummary.text.toString().isEmpty(),
                 getString(R.string.empty_desc_village)
             )
+
+            if (mAdapter.getData().isEmpty()) {
+                Toast.makeText(
+                    this@AddDesaBinaanActivity,
+                    getString(R.string.empty_documentation),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
@@ -125,10 +146,11 @@ class AddDesaBinaanActivity : BaseActivity<ActivityAddDesaBinaanBinding>(), View
         binding.edtName.text.toString().isNotEmpty() &&
                 binding.edtLatitude.text.toString().isNotEmpty() &&
                 binding.edtLongitude.text.toString().isNotEmpty() &&
-                binding.edtSummary.text.toString().isNotEmpty()
+                binding.edtSummary.text.toString().isNotEmpty() &&
+                mAdapter.getData().isNotEmpty()
 
     private fun getForm(): Desa {
-        with(binding){
+        with(binding) {
             return Desa(
                 name = edtName.text.toString(),
                 description = edtSummary.text.toString(),
