@@ -24,7 +24,7 @@ class ListChatActivity : BaseActivity<ActivityListChatBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.title = getString(R.string.role_admin)
+        supportActionBar?.title = getString(R.string.ruang_aman)
 
         setupRecylerView()
         viewModel.listUser.observe(this, this::listUserObserver)

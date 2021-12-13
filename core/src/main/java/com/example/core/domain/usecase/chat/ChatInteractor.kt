@@ -33,7 +33,7 @@ class ChatInteractor(private val chatRepo: IChatRepository, private val userRepo
                     }
                     emit(Resource.Success(listUser))
                 }
-                is Resource.Error -> emit(Resource.Error<List<UserWithChat>>(it.message.toString()))
+                is Resource.Error -> emit(Resource.Error(it.message.toString()))
                 is Resource.Loading -> emit(Resource.Loading())
             }
         }

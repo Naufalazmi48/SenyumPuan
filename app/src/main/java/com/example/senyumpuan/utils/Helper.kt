@@ -1,6 +1,9 @@
-package com.example.core.utils
+package com.example.senyumpuan.utils
 
+import android.annotation.SuppressLint
+import android.text.method.ScrollingMovementMethod
 import android.widget.EditText
+import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.textfield.TextInputLayout
 
@@ -11,6 +14,16 @@ object Helper {
             if (it.toString().isNotEmpty() && viewInput.error != null) {
                 viewInput.error = null
             }
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    fun TextView.setScrollable() {
+        movementMethod = ScrollingMovementMethod()
+
+        setOnTouchListener { _, _ ->
+            this.parent.requestDisallowInterceptTouchEvent(true)
+            false
         }
     }
 

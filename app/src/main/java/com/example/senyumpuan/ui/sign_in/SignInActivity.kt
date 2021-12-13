@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import com.example.core.data.Resource
-import com.example.core.utils.Helper.formErrorHandler
-import com.example.core.utils.Helper.setAutoClearError
+import com.example.senyumpuan.utils.Helper.formErrorHandler
+import com.example.senyumpuan.utils.Helper.setAutoClearError
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.ActivitySignInBinding
 import com.example.senyumpuan.ui.BaseActivity
@@ -39,13 +39,13 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(), View.OnClickListen
         }
     }
 
-    private fun validateForm(): Boolean =
+    private fun isValidForm(): Boolean =
         binding.edtEmail.text.toString().isNotEmpty() && binding.edtPassword.text.toString().isNotEmpty()
 
     override fun onClick(v: View) {
         when(v.id) {
             R.id.sign_in -> {
-                if (validateForm()) {
+                if (isValidForm()) {
                     val email = binding.edtEmail.text.toString()
                     val password = binding.edtPassword.text.toString()
                     viewModel.login(email, password)

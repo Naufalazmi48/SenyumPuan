@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.core.data.Resource
 import com.example.core.domain.model.User
-import com.example.core.utils.Helper.formErrorHandler
-import com.example.core.utils.Helper.setAutoClearError
+import com.example.senyumpuan.utils.Helper.formErrorHandler
+import com.example.senyumpuan.utils.Helper.setAutoClearError
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.ActivityRegisterBinding
 import com.example.senyumpuan.ui.BaseActivity
@@ -41,7 +41,9 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
     private fun registerObserver(result: Resource<Boolean>) {
         when (result) {
             is Resource.Error -> {
-                Snackbar.make(binding.root, "${result.message}", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, "${result.message}", Snackbar.LENGTH_SHORT)
+                    .setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
+                    .show()
                 binding.progressBar.isVisible = false
             }
             is Resource.Loading -> {
@@ -69,7 +71,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
         }
     }
 
-    private fun validateForm(): Boolean =
+    private fun isValidForm(): Boolean =
         binding.edtName.text.toString().isNotEmpty() &&
                 binding.edtEmail.text.toString().isNotEmpty() &&
                 binding.dropGender.text.toString().isNotEmpty() &&
@@ -83,7 +85,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
     override fun onClick(v: View) {
         when (v.id) {
             R.id.register -> {
-                if (validateForm()) {
+                if (isValidForm()) {
                     val user = getUserForm()
                     val password = binding.edtPassword.text.toString()
 
@@ -117,11 +119,31 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), View.OnClickLi
 
     private fun showErrorMessage() {
         with(binding) {
-            formErrorHandler(name, edtName.text.toString().isEmpty(), getString(R.string.empty_name))
-            formErrorHandler(email, edtEmail.text.toString().isEmpty(), getString(R.string.empty_email))
-            formErrorHandler(gender, dropGender.text.toString().isEmpty(), getString(R.string.empty_gender))
-            formErrorHandler(phone, edtPhone.text.toString().isEmpty(), getString(R.string.empty_hp))
-            formErrorHandler(address, edtAddress.text.toString().isEmpty(), getString(R.string.empty_address))
+            formErrorHandler(
+                name,
+                edtName.text.toString().isEmpty(),
+                getString(R.string.empty_name)
+            )
+            formErrorHandler(
+                email,
+                edtEmail.text.toString().isEmpty(),
+                getString(R.string.empty_email)
+            )
+            formErrorHandler(
+                gender,
+                dropGender.text.toString().isEmpty(),
+                getString(R.string.empty_gender)
+            )
+            formErrorHandler(
+                phone,
+                edtPhone.text.toString().isEmpty(),
+                getString(R.string.empty_hp)
+            )
+            formErrorHandler(
+                address,
+                edtAddress.text.toString().isEmpty(),
+                getString(R.string.empty_address)
+            )
             formErrorHandler(
                 age,
                 edtAge.text.toString().isEmpty(),

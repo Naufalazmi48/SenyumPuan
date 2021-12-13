@@ -33,6 +33,8 @@ class RuangAmanActivity : BaseActivity<ActivityRuangAmanBinding>(), View.OnClick
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        supportActionBar?.title = getString(R.string.ruang_aman)
         intent.getStringExtra(GET_RECEIVER_ID)?.let { receiverId ->
             viewModel.receiverId = receiverId
         }

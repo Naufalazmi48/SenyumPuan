@@ -15,6 +15,9 @@
 
     <application>
         <activity
+            android:name=".ui.desa_binaan.AddDesaBinaanActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.ruang_aman.ListChatActivity"
             android:exported="false" />
     </application>

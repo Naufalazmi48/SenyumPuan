@@ -14,7 +14,7 @@ class UserInteractor(private val userRepository: IUserRepository) : UserUseCase 
             when(it) {
                 is Resource.Success -> {
                     if (!userRepository.isVerifiedEmail()) {
-                        emit(Resource.Error<Boolean>(NEED_VERIFICATION_EMAIL))
+                        emit(Resource.Error(NEED_VERIFICATION_EMAIL))
                     } else {
                         emit(it)
                     }

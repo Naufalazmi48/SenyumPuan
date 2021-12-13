@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface DesaBinaanUseCase {
     suspend fun getLocationDesaBinaan(): Flow<Resource<List<Desa>>>
-    fun addLocationDesaBinaan(desa: Desa)
+    suspend fun addLocationDesaBinaan(desa: Desa): Flow<Resource<Boolean>>
 }
