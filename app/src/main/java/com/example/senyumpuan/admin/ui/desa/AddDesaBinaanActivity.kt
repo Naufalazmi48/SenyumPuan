@@ -1,4 +1,4 @@
-package com.example.admin.ui.desa_binaan
+package com.example.senyumpuan.admin.ui.desa
 
 import android.annotation.SuppressLint
 import android.net.Uri
@@ -11,22 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.data.Resource
 import com.example.core.domain.model.Desa
 import com.example.senyumpuan.R
-import com.example.senyumpuan.admin.di.adminViewModelModule
-import com.example.senyumpuan.admin.ui.desa_binaan.AddDesaBinaanViewModel
-import com.example.senyumpuan.admin.ui.desa_binaan.ImageAdapter
 import com.example.senyumpuan.databinding.ActivityAddDesaBinaanBinding
 import com.example.senyumpuan.ui.BaseActivity
 import com.example.senyumpuan.utils.Helper.formErrorHandler
 import com.example.senyumpuan.utils.Helper.setAutoClearError
 import com.example.senyumpuan.utils.Helper.setScrollable
 import org.koin.android.ext.android.inject
-import org.koin.core.context.loadKoinModules
 
 class AddDesaBinaanActivity : BaseActivity<ActivityAddDesaBinaanBinding>(), View.OnClickListener {
-
-    init {
-        loadKoinModules(adminViewModelModule)
-    }
 
     private val viewModel: AddDesaBinaanViewModel by inject()
     private val selectImageFromGalleryResult =

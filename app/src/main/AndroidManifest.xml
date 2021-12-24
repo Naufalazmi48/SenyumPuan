@@ -31,7 +31,7 @@
             android:name=".admin.ui.ruang_aman.ListChatActivity"
             android:exported="true" />
         <activity
-            android:name=".admin.ui.desa_binaan.AddDesaBinaanActivity"
+            android:name=".admin.ui.desa.AddDesaBinaanActivity"
             android:exported="true" />
         <activity
             android:name=".ui.splashscreen.SplashActivity"

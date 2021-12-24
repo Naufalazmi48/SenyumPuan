@@ -1,4 +1,4 @@
-package com.example.senyumpuan.admin.ui.desa_binaan
+package com.example.senyumpuan.admin.ui.desa
 
 import android.net.Uri
 import android.view.LayoutInflater

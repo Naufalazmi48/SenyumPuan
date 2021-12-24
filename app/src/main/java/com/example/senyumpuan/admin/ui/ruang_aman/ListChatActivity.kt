@@ -18,10 +18,6 @@ class ListChatActivity : BaseActivity<ActivityListChatBinding>() {
     private val viewModel: ListChatViewModel by viewModel()
     private val mAdapter = ListChatAdapter()
 
-    init {
-        loadKoinModules(adminViewModelModule)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.title = getString(R.string.ruang_aman)

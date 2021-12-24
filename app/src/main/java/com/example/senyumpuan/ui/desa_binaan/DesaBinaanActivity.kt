@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
+import com.example.senyumpuan.admin.ui.desa.AddDesaBinaanActivity
 import com.example.core.data.Resource
 import com.example.core.domain.model.Desa
 import com.example.senyumpuan.R
@@ -64,7 +65,7 @@ class DesaBinaanActivity : BaseActivity<ActivityDesaBinaanBinding>() {
             startActivity(
                 Intent(
                     this,
-                    Class.forName("com.example.admin.ui.desa_binaan.AddDesaBinaanActivity")
+                    AddDesaBinaanActivity::class.java
                 )
             )
         }
