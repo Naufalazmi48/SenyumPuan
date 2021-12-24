@@ -9,4 +9,3 @@ dependencyResolutionManagement {
 rootProject.name = "SenyumPuan"
 include ':app'
 include ':core'
-include ':admin'

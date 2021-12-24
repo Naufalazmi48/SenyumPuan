@@ -28,6 +28,12 @@
             android:name=".ui.sign_in.SignInActivity"
             android:exported="true" />
         <activity
+            android:name=".admin.ui.ruang_aman.ListChatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".admin.ui.desa_binaan.AddDesaBinaanActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.splashscreen.SplashActivity"
             android:exported="true">
             <intent-filter>

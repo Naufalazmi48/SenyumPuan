@@ -1,4 +1,4 @@
-package com.example.admin.ui.ruang_aman
+package com.example.senyumpuan.admin.ui.ruang_aman
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.example.admin.ui.ruang_aman
+package com.example.senyumpuan.admin.ui.ruang_aman
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.admin.R
-import com.example.admin.databinding.ItemChatBinding
 import com.example.core.presentation.model.UserWithChat
 import com.example.core.utils.getStringDate
 import com.example.core.utils.getStringTime
+import com.example.senyumpuan.R
+import com.example.senyumpuan.databinding.ItemChatBinding
 import com.example.senyumpuan.ui.ruang_aman.RuangAmanActivity
 import com.example.senyumpuan.ui.ruang_aman.RuangAmanActivity.Companion.GET_RECEIVER_ID
 

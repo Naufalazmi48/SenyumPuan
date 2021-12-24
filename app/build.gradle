@@ -36,7 +36,6 @@ android {
     viewBinding {
         enabled = true
     }
-    dynamicFeatures = [':admin']
 }
 
 dependencies {

@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import com.example.senyumpuan.admin.ui.ruang_aman.ListChatActivity
 import com.example.senyumpuan.R
 import com.example.senyumpuan.databinding.ActivityDashboardBinding
 import com.example.senyumpuan.ui.desa_binaan.DesaBinaanActivity
@@ -110,7 +111,7 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>(), View.OnClick
                     startActivity(
                         Intent(
                             this,
-                            Class.forName("com.example.admin.ui.ruang_aman.ListChatActivity")
+                            ListChatActivity::class.java
                         )
                     )
                 }

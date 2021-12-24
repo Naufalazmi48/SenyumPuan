@@ -1,14 +1,14 @@
-package com.example.admin.ui.ruang_aman
+package com.example.senyumpuan.admin.ui.ruang_aman
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.senyumpuan.R
-import com.example.admin.databinding.ActivityListChatBinding
-import com.example.admin.di.adminViewModelModule
 import com.example.core.data.Resource
 import com.example.core.presentation.model.UserWithChat
+import com.example.senyumpuan.R
+import com.example.senyumpuan.admin.di.adminViewModelModule
+import com.example.senyumpuan.databinding.ActivityListChatBinding
 import com.example.senyumpuan.ui.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules

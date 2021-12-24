@@ -1,6 +1,7 @@
 package com.example.senyumpuan
 
 import android.app.Application
+import com.example.senyumpuan.admin.di.adminViewModelModule
 import com.example.core.di.firebaseModule
 import com.example.core.di.repositoryModule
 import com.example.senyumpuan.di.useCaseModule
@@ -18,6 +19,7 @@ class MyApplication: Application() {
             modules(repositoryModule)
             modules(useCaseModule)
             modules(viewModelModule)
+            modules(adminViewModelModule)
         }
 
         Mapbox.getInstance(this, BuildConfig.API_KEY)
